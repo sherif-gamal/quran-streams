@@ -166,7 +166,7 @@ export const RadioPlayer = () => {
 
     return (
         <Player>
-            <StationChooser stations={streams} currentStream={stream} onUpdateSelection={stream => {
+            <StationChooser stations={streams} currentStream={currentStream} onUpdateSelection={stream => {
                 updateCurrentStream(stream)
             }
             } />

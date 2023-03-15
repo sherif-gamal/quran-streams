@@ -54,7 +54,7 @@ export const StationChooser = ({ stations, currentStream, onUpdateSelection }) =
         <Container>
             <CurrentlyPlaying>
                 <Marquee direction='right' gradientColor={[208, 183, 142]}>
-                    {currentStream.ar} | {currentStream.en}
+                    {stations[currentStream].ar} | {stations[currentStream].en}
                 </Marquee>
                 <Flex>
                     <Button icon={chevron} onClick={() => setOpen(!open)} />
@@ -63,7 +63,10 @@ export const StationChooser = ({ stations, currentStream, onUpdateSelection }) =
             {
                 <List style={{ maxHeight: open ? "400px" : "0px" }}>
                     {stations.map((station, index) => (
-                        <Station key={index} onClick={() => onUpdateSelection(index)} >
+                        <Station key={index} onClick={() => onUpdateSelection(index)}
+                            style={{
+                                backgroundColor: currentStream === index ? "#b1ce34" : "#f1f3f4"
+                            }}>
                             <div>{station.ar}</div>
                             <div>{station.en}</div>
                         </Station>
