@@ -189,7 +189,7 @@ export const RadioPlayer = () => {
                         onClick={toggleMute} />
                 </div>
             </Controls>
-            <audio ref={audioRef} src={stream.url} controls autoPlay />
+            <audio ref={audioRef} src={stream.url} autoPlay />
         </Player>
     )
 }
