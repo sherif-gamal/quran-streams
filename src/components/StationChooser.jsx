@@ -53,7 +53,7 @@ export const StationChooser = ({ stations, currentStream, onUpdateSelection }) =
     return (
         <Container>
             <CurrentlyPlaying>
-                <Marquee direction='right' gradientColor={[14, 5, 5]}>
+                <Marquee direction='right' gradientColor={[208, 183, 142]}>
                     {currentStream.ar} | {currentStream.en}
                 </Marquee>
                 <Flex>
