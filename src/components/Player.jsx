@@ -65,7 +65,7 @@ function getPlayIcon(state) {
     }
 }
 
-export const RadioPlayer = () => {
+export const PlaylistPlayer = () => {
     const audioRef = useRef(null);
 
     const [currentStream, setCurrentStream] = useLocalStorage('currentStream', 0);

@@ -1,0 +1,17 @@
+[
+    {
+        "slug": "radio",
+        "name": "Radio Quran Karim",
+        "url": "/playlists/radio.m3u8"
+    },
+    {
+        "slug": "afasy",
+        "name": "Afasy",
+        "url": "/playlists/mishaari_raashid_al_3afaasee.m3u8"
+    },
+    {
+        "slug": "ajmy",
+        "name": "Ahmed Bin Aly Ajmy",
+        "url": "/playlists/ajmy.m3u8"
+    }
+]
