@@ -47,14 +47,15 @@ const Flex = styled.div`
     flex-direction: row;
 `
 
-export const StationChooser = ({ stations, currentStream, onUpdateSelection }) => {
+export const TrackPicker = ({ playlist, currentStream, onUpdateSelection }) => {
     const [open, setOpen] = useState(true)
     const chevron = open ? ChevronDown : ChevronUp
+    const stream = playlist.tracks[currentStream]
     return (
         <Container>
             <CurrentlyPlaying>
                 <Marquee direction='right' gradientColor={[208, 183, 142]}>
-                    {stations[currentStream].ar} | {stations[currentStream].en}
+                    {stream.groupTitle} | {stream.name}
                 </Marquee>
                 <Flex>
                     <Button icon={chevron} onClick={() => setOpen(!open)} />
@@ -62,13 +63,12 @@ export const StationChooser = ({ stations, currentStream, onUpdateSelection }) =
             </CurrentlyPlaying>
             {
                 <List style={{ maxHeight: open ? "400px" : "0px" }}>
-                    {stations.map((station, index) => (
+                    {playlist.tracks.map((station, index) => (
                         <Station key={index} onClick={() => onUpdateSelection(index)}
                             style={{
                                 backgroundColor: currentStream === index ? "#b1ce34" : "#f1f3f4"
                             }}>
-                            <div>{station.ar}</div>
-                            <div>{station.en}</div>
+                            <div>{index + 1} - {station.name}</div>
                         </Station>
                     ))}
                 </List>

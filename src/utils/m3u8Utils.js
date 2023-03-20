@@ -11,12 +11,6 @@ export function parseAudioPlaylist(m3u8) {
             const url = lines[i + 1];
             playlist.tracks.push({ groupTitle, name, url });
         }
-        if (line.startsWith('#PLAYLIST:')) {
-            playlist.title = line.split('PLAYLIST:')[1];
-        }
-    }
-    if (!playlist.title && playlist.length > 0) {
-        playlist.title = playlist.tracks[0].groupTitle;
     }
     return playlist;
 }

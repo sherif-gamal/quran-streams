@@ -1,9 +1,8 @@
 import styled from '@emotion/styled';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocalStorage } from 'react-use';
-import streams from '../common/stations.json';
 import Button from './Button';
-import { StationChooser } from './StationChooser';
+import { TrackPicker } from './TrackPicker';
 import { LoadingIcon } from './icons/Loading';
 import { NextIcon } from './icons/Next';
 import { PauseIcon } from './icons/Pause';
@@ -15,7 +14,7 @@ const Player = styled.div`
     display: flex;
     flex-direction: column;
     place-items: center;
-    min-width: 300px;
+    min-width: 400px;
     max-width: 800px;
     width: 100%;
     padding: 1rem;
@@ -65,7 +64,7 @@ function getPlayIcon(state) {
     }
 }
 
-export const PlaylistPlayer = () => {
+export const PlaylistPlayer = ({ playlist }) => {
     const audioRef = useRef(null);
 
     const [currentStream, setCurrentStream] = useLocalStorage('currentStream', 0);
@@ -73,7 +72,17 @@ export const PlaylistPlayer = () => {
     const [muted, setMuted] = useState(false)
     const [showVolumeControl, setShowVolumeControl] = useState(false)
     const [playbackState, setPlaybackState] = useState(PLAYBACK_STATES.PAUSED);
-    const stream = streams[currentStream];
+    const streams = playlist.tracks;
+    useEffect(() => {
+        setPlaybackState(PLAYBACK_STATES.PAUSED);
+    }, [playlist]);
+
+    let stream;
+    if (playlist.tracks.length > currentStream) {
+        stream = streams[currentStream];
+    } else {
+        setCurrentStream(0);
+    }
     const ThevolumeIcon = muted ? MutedVolumeIcon : VolumeIcon;
 
     useEffect(() => {
@@ -83,11 +92,19 @@ export const PlaylistPlayer = () => {
             console.log('playing');
         });
         audio.oncanplay = () => {
-            console.log('can play');
+            // if (playbackState === PLAYBACK_STATES.PLAYING) {
+            //     audio.play();
+            // } else {
+            //     setPlaybackState(PLAYBACK_STATES.PAUSED);
+            // }
         };
         audio.onpause = () => {
             console.log('paused');
             setPlaybackState(PLAYBACK_STATES.PAUSED);
+        }
+        audio.onended = () => {
+            console.log('ended');
+            next();
         }
         audio.onplay = () => {
             console.log('playing');
@@ -166,7 +183,7 @@ export const PlaylistPlayer = () => {
 
     return (
         <Player>
-            <StationChooser stations={streams} currentStream={currentStream} onUpdateSelection={stream => {
+            <TrackPicker playlist={playlist} currentStream={currentStream} onUpdateSelection={stream => {
                 updateCurrentStream(stream)
             }
             } />

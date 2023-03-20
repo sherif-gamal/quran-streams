@@ -1,17 +1,92 @@
 [
     {
         "slug": "radio",
-        "name": "Radio Quran Karim",
+        "name": "راديو | Radio",
         "url": "/playlists/radio.m3u8"
     },
     {
         "slug": "afasy",
-        "name": "Afasy",
-        "url": "/playlists/mishaari_raashid_al_3afaasee.m3u8"
+        "name": "مشاري بن راشد العفاسي | Mishary Rashid Alafasy",
+        "url": "/playlists/afasy.m3u8"
     },
     {
         "slug": "ajmy",
-        "name": "Ahmed Bin Aly Ajmy",
+        "name": "أحمد بن علي العجمي | Ahmed Al Ajmi",
         "url": "/playlists/ajmy.m3u8"
+    },
+    {
+        "slug": "shatri",
+        "name": "أبو بكر الشاطري | Abu Bakr Ash-Shatri",
+        "url": "/playlists/shatri.m3u8"
+    },
+    {
+        "slug": "ghamdi",
+        "name": "سعد الغامدي | Saad Al Ghamdi",
+        "url": "/playlists/ghamdi.m3u8"
+    },
+    {
+        "slug": "abdulbaset-muratal",
+        "name": "عبد الباسط عبد الصمد مرتل | Abdulbaset Muratal",
+        "url": "/playlists/abdulbaset-muratal.m3u8"
+    },
+    {
+        "slug": "abdulbaset-mujawad",
+        "name": "عبد الباسط عبد الصمد مجود | Abdulbaset Mujawa",
+        "url": "/playlists/abdulbaset-mujawad.m3u8"
+    },
+    {
+        "slug": "minshawi-mujawad",
+        "name": "محمد صديق المنشاوي مجود | Muhammad Siddiq Al-Minshawi Mujawad",
+        "url": "/playlists/minshawi-mujawad.m3u8"
+    },
+    {
+        "slug": "minshawi",
+        "name": "محمد صديق المنشاوي مرتل | Muhammad Siddiq Al-Minshawi Muratal",
+        "url": "/playlists/minshawi.m3u8"
+    },
+    {
+        "slug": "albanna",
+        "name": "محمود علي البنا | Mahmoud Ali Al-Banna",
+        "url": "/playlists/albanna.m3u8"
+    },
+    {
+        "slug": "alhuthaify",
+        "name": "علي عبد الرحمن الحذيفي | Ali Alhuthaify",
+        "url": "/playlists/alhuthaify.m3u8"
+    },
+    {
+        "slug": "husary",
+        "name": "محمود خليل الحصري | Mahmoud Khalil Al-Husary",
+        "url": "/playlists/husary.m3u8"
+    },
+    {
+        "slug": "mostafa-ismaeel",
+        "name": "مصطفى إسماعيل | Mostafa Ismaeel",
+        "url": "/playlists/mostafa-ismaeel.m3u8"
+    },
+    {
+        "slug": "muaiqly",
+        "name": "ماهر المعيقلي | Maher Al Muaiqly",
+        "url": "/playlists/muaiqly.m3u8"
+    },
+    {
+        "slug": "muhammed-jibreel",
+        "name": "محمد جبريل | Muhammad Jibreel",
+        "url": "/playlists/muhammed-jibreel.m3u8"
+    },
+    {
+        "slug": "muqaddim",
+        "name": "محمد إسماعيل المقدم | Muhammad Ismail Al-Muqaddim",
+        "url": "/playlists/muqaddim.m3u8"
+    },
+    {
+        "slug": "sudais",
+        "name": "عبد الرحمن السديس | Abdul Rahman Al Sudais",
+        "url": "/playlists/sudais.m3u8"
+    },
+    {
+        "slug": "tablawi",
+        "name": "محمد الطبلاوي | Muhammad Al Tablawi",
+        "url": "/playlists/tablawi.m3u8"
     }
 ]
