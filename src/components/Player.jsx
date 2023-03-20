@@ -132,7 +132,7 @@ export const PlaylistPlayer = ({ playlist, isRadio }) => {
             album: playlist.title,
             artwork: [
                 {
-                    src: "https://dummyimage.com/96x96",
+                    src: "/favicon.png",
                     sizes: "96x96",
                     type: "image/png",
                 },
