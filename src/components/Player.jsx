@@ -91,13 +91,6 @@ export const PlaylistPlayer = ({ playlist }) => {
         audio.addEventListener('playing', () => {
             console.log('playing');
         });
-        audio.oncanplay = () => {
-            // if (playbackState === PLAYBACK_STATES.PLAYING) {
-            //     audio.play();
-            // } else {
-            //     setPlaybackState(PLAYBACK_STATES.PAUSED);
-            // }
-        };
         audio.onpause = () => {
             console.log('paused');
             setPlaybackState(PLAYBACK_STATES.PAUSED);
@@ -114,19 +107,38 @@ export const PlaylistPlayer = ({ playlist }) => {
             console.log('volume changed', e.target.volume);
         }
         navigator.mediaSession.setActionHandler("previoustrack", () => {
+            console.log('prev')
             prev();
         });
         navigator.mediaSession.setActionHandler("nexttrack", () => {
+            console.log('next')
+
             next();
         });
         navigator.mediaSession.setActionHandler("play", () => {
+            console.log('play')
             togglePlay();
         });
         navigator.mediaSession.setActionHandler("pause", () => {
+            console.log('pause')
+
             togglePlay();
         });
         navigator.mediaSession.setActionHandler("stop", () => {
+            console.log('stop')
             audioRef.current.pause();
+        });
+        navigator.mediaSession.metadata = new MediaMetadata({
+            title: stream.name,
+            artist: stream.groupTitle,
+            album: playlist.title,
+            artwork: [
+                {
+                    src: "https://dummyimage.com/96x96",
+                    sizes: "96x96",
+                    type: "image/png",
+                },
+            ],
         });
     }, [audioRef]);
 
