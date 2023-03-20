@@ -19,6 +19,7 @@ const Input = styled.input`
   border-bottom: 1px solid #040404;
   width: 100%;
   height: 30px;
+  background-color: white;
 `
 const PlaylistList = styled.ul`
     list-style: none;

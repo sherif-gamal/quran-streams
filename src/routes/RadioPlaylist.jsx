@@ -7,7 +7,7 @@ import { getPlaylist } from "../utils/m3u8Utils";
 export async function loader() {
     const url = playlists.find((playlist) => playlist.slug === 'radio').url;
     const playlist = await getPlaylist(url);
-    return { playlist };
+    return { playlist, isRadio: true };
 }
 
 export default function RadioPlaylist() {
