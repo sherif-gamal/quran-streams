@@ -18,7 +18,7 @@ const StyledButton = styled.div`
 
 const Button = ({ onClick, round, icon: Icon, onHover, onMouseOut }) => {
     return (
-        <StyledButton onClick={onClick} style={{ borderRadius: round ? '50%' : '8%' }} onMouseOver={onHover} onMouseLeave={() => console.log("left")} onMouseOut={console.log('out')}>
+        <StyledButton onClick={onClick} style={{ borderRadius: round ? '50%' : '8%' }} onMouseOver={onHover}>
             <Icon />
         </StyledButton>
     );

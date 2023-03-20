@@ -64,15 +64,17 @@ function getPlayIcon(state) {
     }
 }
 
-export const PlaylistPlayer = ({ playlist }) => {
+export const PlaylistPlayer = ({ playlist, isRadio }) => {
     const audioRef = useRef(null);
 
     const [currentStream, setCurrentStream] = useLocalStorage('currentStream', 0);
     const [volume, setVolume] = useLocalStorage('volume', 1);
     const [muted, setMuted] = useState(false)
-    const [showVolumeControl, setShowVolumeControl] = useState(false)
+    const [showVolumeControl, setShowVolumeControl] = useState(false);
+    const [seek, setSeek] = useState(0);
     const [playbackState, setPlaybackState] = useState(PLAYBACK_STATES.PAUSED);
     const streams = playlist.tracks;
+
     useEffect(() => {
         setPlaybackState(PLAYBACK_STATES.PAUSED);
     }, [playlist]);
@@ -84,48 +86,44 @@ export const PlaylistPlayer = ({ playlist }) => {
         setCurrentStream(0);
     }
     const ThevolumeIcon = muted ? MutedVolumeIcon : VolumeIcon;
-
+    const onSeekChange = (e) => {
+        const { value } = e.target;
+        setSeek(value);
+        if (playbackState === PLAYBACK_STATES.PLAYING) {
+            // setSeek(e.target.value)
+            const audio = audioRef.current;
+            audio.currentTime = audio.duration * value / 100;
+        } else {
+        }
+    }
     useEffect(() => {
         if (!audioRef.current) return
         const audio = audioRef.current;
-        audio.addEventListener('playing', () => {
-            console.log('playing');
-        });
         audio.onpause = () => {
-            console.log('paused');
             setPlaybackState(PLAYBACK_STATES.PAUSED);
         }
         audio.onended = () => {
-            console.log('ended');
             next();
         }
         audio.onplay = () => {
-            console.log('playing');
             setPlaybackState(PLAYBACK_STATES.PLAYING);
         }
-        audio.onvolumechange = (e) => {
-            console.log('volume changed', e.target.volume);
+        audio.ontimeupdate = () => {
+            setSeek(audio.currentTime / audio.duration * 100);
         }
         navigator.mediaSession.setActionHandler("previoustrack", () => {
-            console.log('prev')
             prev();
         });
         navigator.mediaSession.setActionHandler("nexttrack", () => {
-            console.log('next')
-
             next();
         });
         navigator.mediaSession.setActionHandler("play", () => {
-            console.log('play')
             togglePlay();
         });
         navigator.mediaSession.setActionHandler("pause", () => {
-            console.log('pause')
-
             togglePlay();
         });
         navigator.mediaSession.setActionHandler("stop", () => {
-            console.log('stop')
             audioRef.current.pause();
         });
         navigator.mediaSession.metadata = new MediaMetadata({
@@ -206,6 +204,7 @@ export const PlaylistPlayer = ({ playlist }) => {
                         getPlayIcon(playbackState)}
                         onClick={togglePlay} />
                     <Button round icon={NextIcon} onClick={next} />
+                    {!isRadio && <Slider type="range" min={0} max={100} value={seek} onChange={onSeekChange} />}
                 </PlaybackControls>
                 <div
                     style={{ display: 'flex', justifyContent: 'flex-end' }}
