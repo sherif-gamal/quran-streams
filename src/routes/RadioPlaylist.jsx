@@ -11,10 +11,9 @@ export async function loader() {
 }
 
 export default function RadioPlaylist() {
-    const data = useLoaderData();
-    const playlist = data && data.playlist
+    const { playlist } = useLoaderData()
 
     return (
-        <PlaylistPlayer playlist={playlist} />
+        <PlaylistPlayer playlist={playlist} isRadio />
     );
 }
